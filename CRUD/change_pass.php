@@ -1,4 +1,12 @@
 <?php
+session_start();
+
+require '../function/connexion_test.php';
+
+if (!is_connected()){
+    header('Location: connexion.php');
+}
+
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
@@ -23,11 +31,7 @@ $pdo = new PDO(
     $database_options
 );
 
-require 'function/connexion_test.php';
 
-if (!is_connected()){
-    header('Location: connexion.php');
-}
 
 ?>
 
@@ -35,10 +39,6 @@ if (!is_connected()){
 
 
 <form action="post">
-        <input type="radio" name="choix[]">admin<br>
-        <input type="radio" name="choix[]">user <br>
-        <input type="radio" name="choix[]">user <br>
-
         <label>nom d'utilisateur</label>
         <input type="text" name="username"><br>
         <label>mot de passe actuel</label>
@@ -54,15 +54,36 @@ if (!is_connected()){
     
 
 <?php
+
+if (isset($_POST["username"]) && isset($_POST["old_pass"]) && isset($_POST["new_pass"]) && isset($_POST["new_pass"]) && isset($_POST['new_pass_vérif'])){
+
+
 $username = $_POST['username'];
 $old_pass = $_POST['old_pass'];
 $new_pass = $_POST['new_pass'];
 $new_pass_verif = $_POST['new_pass_verif'];
 
-$querry_verif_compte = ;
-$querr_change_info = ;
 
+$query_verif_old_pass = $pdo->prepare("select ? from users where password = ?");
+$query_verif_old_pass->execute([$type,$old_pass]);
 
+if ($query_verif_old_pass->rowCount() == 0){
+    echo "<script type='text/javascript'>alert('votre ancien mot de passe ne correspond pas');</script>";
+    }
+
+elseif ($new_pass !== $new_pass_verif) {
+    echo "<script type='text/javascript'>alert('les deux mot de passes ne correspondent pas');</script>";
+}
+
+else {
+    $querry_verif_compte = $pdo->prepare("SELECT * FROM ? where username = ? and password = ?");
+    $querry_verif_compte->execute([$type,$username,$old_pass]);
+
+    $querr_change_info = $pdo->prepare("UPDATE ? SET password = $new_pass where password = $old_pass");
+    $querr_change_info->execute([$type,$new_pass]);
+    }
+
+}
 
 
 ?>
