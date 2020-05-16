@@ -14,7 +14,8 @@ if (!is_connected()){
     <title>Document</title>
 </head>
 <body>
-<a href="../CRUD/change_pass.php">changer son mot de passe</a>
+<a href="./change_pass.php">changer son mot de passe</a><br>
+<a href="./sup_compte.php">supprimer votre compte</a>
     
 </body>
 </html>

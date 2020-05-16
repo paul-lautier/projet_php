@@ -93,6 +93,8 @@ if (isset($_POST["username"]) && isset($_POST["email"]) && isset($_POST["passwor
 		$query_add->bindparam(":email", $email);
 		$query_add->bindparam(":password", $password);
 		$query_add->execute();
+		session_start();
+        $_SESSION['connected'] = $username;
 		header('Location: home_demandeur.php');
 	}
 }
