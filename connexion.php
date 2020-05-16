@@ -12,16 +12,43 @@
     <title>espace connexion</title>
 </head>
 <body>
-    <div class="login_user">
-        <a href="./demandeur/connexion_demandeur.php"><h1>connexion utilisateur</h1></a>
-        <a href="./demandeur/new_demandeur.php"><h1>nouveau compte utilisateur</h1></a>
-        <a href="./admin/connexion_admin.php"><h1>connexion_admin</h1></a>
-        <a href="./donneur/connexion_donneur.php"><h1>connexion entreprise</h1></a>
-        <a href="./donneur/new_donneur.php"><h1>nouveau compte entreprise</h1></a>
-    </div>
+
+
+    <form action="" method="post">
+        <button name="co_user">connexion utilisateur</button>
+        <button name="new_user">nouveau compte utilisateur</button>
+        <button name="co_admin">connexion_admin</button>
+        <button name="co_comp">connexion entreprise</button>
+        <button name="new_comp">nouveau compte entreprise</button>
+    </form>
+
 
 
 
 
 </body>
 </html>
+
+<?php
+if (isset($_POST['co_user'])){
+
+    header('Location: ./demandeur/connexion_demandeur.php');
+}
+if (isset($_POST['new_user'])){
+
+    header('Location: ./demandeur/new_demandeur.php');
+}
+if (isset($_POST['co_admin'])){
+
+    header('Location: ./admin/connexion_admin.php');
+}
+if (isset($_POST['co_comp'])){
+
+    header('Location: ./donneur/connexion_donneur.php');
+}
+if (isset($_POST['new_comp'])){
+
+    header('Location: ./donneur/new_donneur.php');
+}
+
+?>
