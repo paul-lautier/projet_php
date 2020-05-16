@@ -1,3 +1,5 @@
+<?php require '../function/connexion_test.php'; ?>
+
 <?php
 $database_host = 'localhost';
 $database_port = '3306';
@@ -20,30 +22,37 @@ $pdo = new PDO(
     $database_options
 );
 
-session_start();
-if (isset($_SESSION["id"])) {
-    header("Location : ../home.php");
-    exit;
-}
+
+
 if (isset ($_POST["connexion"])){
     $username = $_POST["username"];
     $password = md5($_POST["password"]);
+}
 
-    $query_verif = $pdo->prepare("SELECT * FROM users WHERE username = ? AND password = ?");
-    $query_verif->execute([$username,$password]);
+$query_verif = $pdo->prepare("SELECT * FROM companies WHERE username = ? AND password = ?");
+$query_verif->execute([$username,$password]);
 
-    if ($query_verif->rowCount() > 0){
+if (is_connected()){
+    header('Location: ../home.php');
+}
+
+if (!empty($_POST['username']) && !empty($_POST['password'])){
+    if ($query_verif->rowCount()>0){
         session_start();
-        header('Location : ../home.php');
+        $_SESSION['connected'] = 1;
+        header('Location: ../home.php');
         exit;
 
     }
-    else{
-        echo "<script type='text/javascript'>alert('mauvais mdp');</script>";
-
+    elseif ($query_verif->rowCount() == 0){
+        echo "<script type='text/javascript'>alert(l identifiant et le mot de passe ne correspondent pas);</script>";
     }
-    
+    elseif (isset($_SESSION['connected'])){
+        header('Location: ../home.php');
+        exit;
+    }
 }
+
 
 
 ?>
@@ -56,14 +65,10 @@ if (isset ($_POST["connexion"])){
     <title>Document</title>
 </head>
 <body>
-    <form method="post">
+<form action="" method="post">
         <input type="username" placeholder="username" name ="username">
         <input type="password"placeholder="password" name="password">
         <button action="submit" name="connexion">se connecter</button>
     </form>
-
-    
-    
-    
 </body>
 </html>
