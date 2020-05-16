@@ -67,14 +67,29 @@ if (isset($_POST["username"]) && isset($_POST["email"]) && isset($_POST["passwor
 	$username = $_POST["username"];
 	$email = $_POST["email"];
 	$password = $_POST["password_1"];
+	$password_test = $_POST['password_2'];
 
-	$query_verif = $pdo->prepare("select username from companies where username = ?");
-	$query_verif->execute([$username]);
+	$query_verif_user = $pdo->prepare("select username from companies where username = ?");
+	$query_verif_user->execute([$username]);
 
-	if ($query_verif-> rowCount() > 0){
+	
+	$query_verif_mail = $pdo->prepare("select email from companies where email = ?");
+	$query_verif_mail->execute([$email]);
+
+	if ($password !== $password_test) {
+		echo "<script type='text/javascript'>alert('les deux mot de passes ne correspondent pas');</script>";
+	}
+
+	elseif ($query_verif_user-> rowCount() > 0){
 		echo "<script type='text/javascript'>alert('l utilisateur existe déjà');</script>";
 		
-	} else {
+	}
+	elseif ($query_verif_mail->rowCount()>0){
+		echo "<script type='text/javascript'>alert('cette email est déjà utilisé');</script>";
+	
+	}
+	
+	else {
 		$password = md5($password);
 		$query_add = $pdo->prepare("INSERT INTO companies (username, email, password) VALUES(:username, :email, :password)");
 		$query_add->bindparam(":username", $username);
