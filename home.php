@@ -1,5 +1,11 @@
 <?php 
-session_start();
+require 'function/connexion_test.php';
+require 'function/kill_session.php';
+
+if (!is_connected()){
+    header('Location: connexion.php');
+
+}
 ?>
 
 <!doctype html>
@@ -12,6 +18,15 @@ session_start();
 </head>
 <body>
     <a href="index.php">retour menu</a>
-    <button name="logout"><?php session_destroy();?>log out</button>
+    <form action="" method="post">
+        <button name="logout">log out</button>
+    </form>
 </body>
 </html>
+
+<?php
+if (isset($_POST['logout'])){
+    deconnect();
+    header('Location: index.php');
+}
+?>
