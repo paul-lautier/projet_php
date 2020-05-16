@@ -1,3 +1,39 @@
+<?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+$database_host = 'localhost';
+$database_port = '3306';
+$database_dbname = 'login';
+$database_user = 'root';
+$database_password = 'Paul@123';
+$database_charset = 'UTF8';
+$database_options = [
+    PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+    PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+];
+
+$pdo = new PDO(
+    'mysql:host=' . $database_host .
+    ';port=' . $database_port .
+    ';dbname=' . $database_dbname .
+    ';charset=' . $database_charset,
+    $database_user,
+    $database_password,
+    $database_options
+);
+
+require 'function/connexion_test.php';
+
+if (!is_connected()){
+    header('Location: connexion.php');
+}
+
+?>
+
+
+
+
 <form action="post">
         <input type="radio" name="choix[]">admin<br>
         <input type="radio" name="choix[]">user <br>
@@ -6,7 +42,7 @@
         <label>nom d'utilisateur</label>
         <input type="text" name="username"><br>
         <label>mot de passe actuel</label>
-        <input type="password" name="old_password"><br>
+        <input type="password" name="old_pass"><br>
 
         <label>nouveau mot de passe</label>
         <input type="password" name="new_pass"><br>
@@ -15,3 +51,18 @@
 
         <button type="submit">changer le mot de pass</button>
     </form>
+    
+
+<?php
+$username = $_POST['username'];
+$old_pass = $_POST['old_pass'];
+$new_pass = $_POST['new_pass'];
+$new_pass_verif = $_POST['new_pass_verif'];
+
+$querry_verif_compte = ;
+$querr_change_info = ;
+
+
+
+
+?>

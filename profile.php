@@ -1,3 +1,11 @@
+<?php
+require 'function/connexion_test.php';
+
+if (!is_connected()){
+    header('Location: connexion.php');
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
