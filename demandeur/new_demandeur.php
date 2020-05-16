@@ -1,7 +1,4 @@
 <?php
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
 $database_host = 'localhost';
 $database_port = '3306';
 $database_dbname = 'login';
@@ -63,7 +60,7 @@ $pdo = new PDO(
 </html>
 
 <?php
-if (isset($_POST["username"]) && isset($_POST["email"]) && isset($_POST["password_1"])&&isset($_POST["password_2"])){
+if (isset($_POST["username"]) && isset($_POST["email"]) && isset($_POST["password_1"]) && isset($_POST["password_2"])){
 	$username = $_POST["username"];
 	$email = $_POST["email"];
 	$password = $_POST["password_1"];
@@ -96,10 +93,7 @@ if (isset($_POST["username"]) && isset($_POST["email"]) && isset($_POST["passwor
 		$query_add->bindparam(":email", $email);
 		$query_add->bindparam(":password", $password);
 		$query_add->execute();
+		header('Location: home_demandeur.php');
 	}
 }
-	
-
-
-
 ?>
