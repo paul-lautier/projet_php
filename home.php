@@ -17,7 +17,10 @@ if (!is_connected()){
     <title>home</title>
 </head>
 <body>
-    <a href="index.php">retour menu</a>
+    <form action="index.php" method="post">
+        <button name='retour_menu'>retour menu</button>
+    </form>
+
     <form action="" method="post">
         <button name="logout">log out</button>
     </form>
@@ -26,6 +29,11 @@ if (!is_connected()){
 
 <?php
 if (isset($_POST['logout'])){
+    deconnect();
+    header('Location: index.php');
+}
+
+if (isset($_POST['retour_menu'])){
     deconnect();
     header('Location: index.php');
 }
