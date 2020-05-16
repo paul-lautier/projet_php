@@ -33,24 +33,21 @@ $query_verif = $pdo->prepare("SELECT * FROM companies WHERE username = ? AND pas
 $query_verif->execute([$username,$password]);
 
 if (is_connected()){
-    header('Location: ../home.php');
+    header('Location: ./home_donneur.php');
 }
 
 if (!empty($_POST['username']) && !empty($_POST['password'])){
     if ($query_verif->rowCount()>0){
         session_start();
-        $_SESSION['connected'] = 1;
-        header('Location: ../home.php');
+        $_SESSION['connected'] = $username;
+        header('Location: ./home_donneur.php');
         exit;
 
     }
     elseif ($query_verif->rowCount() == 0){
         echo "<script type='text/javascript'>alert(l identifiant et le mot de passe ne correspondent pas);</script>";
     }
-    elseif (isset($_SESSION['connected'])){
-        header('Location: ../home.php');
-        exit;
-    }
+
 }
 
 

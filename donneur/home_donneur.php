@@ -3,7 +3,7 @@ require '../function/connexion_test.php';
 require '../function/kill_session.php';
 
 if (!is_connected()){
-    header('Location: connexion.php');
+    header('Location: ../connexion.php');
 
 }
 ?>
