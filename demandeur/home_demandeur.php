@@ -25,6 +25,10 @@ if (!is_connected()){
     <form action="" method="post">
         <button name="profile">accéder à votre profil</button>
     </form>
+
+    <form action="" method="post">
+        <button name="voir_offres">voirs les offres</button>
+    </form>
 </body>
 </html>
 
@@ -37,5 +41,9 @@ if (isset($_POST['logout'])){
 
 if (isset($_POST['profile'])){
     header('Location: profile_demandeur.php');
+}
+
+if (isset($_POST['voir_offres'])){
+    header('Location: voir_offres.php');
 }
 ?>
