@@ -50,9 +50,9 @@ $username = $_SESSION['connected'];
 
 if (isset($_POST["old_pass"]) && isset($_POST["new_pass"]) && isset($_POST["new_pass_verif"])){
   
-    $old_pass = md5($_POST['old_pass']);
-    $new_pass = md5($_POST['new_pass']);
-    $new_pass_verif = md5($_POST['new_pass_verif']);
+    $old_pass = htmlspecialchars(md5($_POST['old_pass']));
+    $new_pass = htmlspecialchars(md5($_POST['new_pass']));
+    $new_pass_verif = htmlspecialchars(md5($_POST['new_pass_verif']));
     
    
 
