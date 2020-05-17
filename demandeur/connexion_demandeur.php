@@ -25,8 +25,8 @@ $pdo = new PDO(
 
 
 if (isset ($_POST["connexion"])){
-    $username = $_POST["username"];
-    $password = md5($_POST["password"]);
+    $username = htmlspecialchars($_POST["username"]);
+    $password = htmlspecialchars(md5($_POST["password"]));
 }
 
 $query_verif = $pdo->prepare("SELECT * FROM users WHERE username = ? AND password = ?");

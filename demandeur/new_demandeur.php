@@ -61,10 +61,10 @@ $pdo = new PDO(
 
 <?php
 if (isset($_POST["username"]) && isset($_POST["email"]) && isset($_POST["password_1"]) && isset($_POST["password_2"])){
-	$username = $_POST["username"];
-	$email = $_POST["email"];
-	$password = $_POST["password_1"];
-	$password_test = $_POST['password_2'];
+	$username = htmlspecialchars($_POST["username"]);
+	$email = htmlspecialchars($_POST["email"]);
+	$password = htmlspecialchars($_POST["password_1"]);
+	$password_test = htmlspecialchars($_POST['password_2']);
 
 	$query_verif_user = $pdo->prepare("select username from users where username = ?");
 	$query_verif_user->execute([$username]);
