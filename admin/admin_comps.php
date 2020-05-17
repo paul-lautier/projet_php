@@ -83,8 +83,9 @@ if(isset($_POST['a_suppr'])){
     $query_del = $pdo->prepare("DELETE FROM companies WHERE username = :a_suppr");
     $query_del->bindParam(':a_suppr',$a_suppr);
     $query_del->execute();
-    $query_del_offre = $pdo->prepare("DELETE FROM offres WHERE username = :username");
-    $query_del_offre->bindParam(':username',$username);
+    header("Refresh:0");
+    $query_del_offre = $pdo->prepare("DELETE FROM offres WHERE entreprise = :username");
+    $query_del_offre->bindParam(':username',$a_suppr);
     $query_del_offre->execute();
     header("Refresh:0");
 }

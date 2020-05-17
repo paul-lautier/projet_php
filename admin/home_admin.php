@@ -32,11 +32,19 @@ session_start();
     </form>
 
     <form action=""method="post">
-    <button name="admin_comps">compte entreprise</button>
+        <button name="admin_comps">compte entreprise</button>
     </form>
 
     <form action=""method="post">
-    <button name="logout">log out</button>
+        <button name="logout">log out</button>
+    </form>
+
+    <form action=""method="post">
+        <button name="voir_offre">voir les offres</button>
+    </form>
+
+    <form action=""method="post">
+        <button name="del_offre">suppimer des offres</button>
     </form>
 
 </body>
@@ -58,5 +66,13 @@ if (isset($_POST['admin_users'])){
 
 if (isset($_POST['admin_comps'])){
     header('Location: ./admin_comps.php');
+}
+
+if (isset($_POST['voir_offre'])){
+    header('Location: ./voir_offres.php');
+}
+
+if (isset($_POST['del_offre'])){
+    header('Location: ./del_offre.php');
 }
 ?>
