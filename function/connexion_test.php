@@ -6,7 +6,7 @@ function is_connected (): bool {
     return !empty($_SESSION['connected']);
 }
 
-function redirect_id_connect (): void {
+function redirect_is_connect (): void {
     if (is_connected()){
         header("Location: home.php");
         exit;
