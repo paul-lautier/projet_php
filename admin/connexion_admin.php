@@ -4,10 +4,6 @@
 
 <?php
 
-if (!is_connected()){
-    header('Location: connexion.php');
-}
-session_start();
 
 $database_host = 'localhost';
 $database_port = '3306';
