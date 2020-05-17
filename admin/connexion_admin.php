@@ -3,6 +3,12 @@
 
 
 <?php
+
+if (!is_connected()){
+    header('Location: connexion.php');
+}
+session_start();
+
 $database_host = 'localhost';
 $database_port = '3306';
 $database_dbname = 'login';
@@ -34,9 +40,6 @@ if (isset ($_POST["connexion"])){
 $query_verif = $pdo->prepare("SELECT * FROM admins WHERE username = ? AND password = ?");
 $query_verif->execute([$username,$password]);
 
-if (is_connected()){
-    header('Location: ./home_admin.php');
-}
 
 if (!empty($_POST['username']) && !empty($_POST['password'])){
     if ($query_verif->rowCount()>0){

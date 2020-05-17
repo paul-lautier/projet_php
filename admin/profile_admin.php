@@ -1,4 +1,7 @@
 <?php
+if (!is_connected()){
+    header('Location: connexion.php');
+}
 session_start();
 
 
@@ -25,9 +28,7 @@ $pdo = new PDO(
 
 require '../function/connexion_test.php';
 
-if (!is_connected()){
-    header('Location: connexion.php');
-}
+
 $username = $_SESSION['connected'];
 
 $querry_get_info = $pdo->prepare("SELECT email FROM admins WHERE username = :username");
