@@ -24,6 +24,10 @@ if (!is_connected()){
     </form>
 
     <form action="" method="post">
+        <button name="offres">voir les offres</button>
+    </form>
+
+    <form action="" method="post">
         <button name="profile">accéder a votre profile</button>
     </form>
 </body>
@@ -39,5 +43,9 @@ if (isset($_POST['logout'])){
 
 if (isset($_POST['profile'])){
     header('Location: profile_donneur.php');
+}
+
+if (isset($_POST['offres'])){
+    header('Location: depose_offres.php');
 }
 ?>
