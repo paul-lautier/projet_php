@@ -27,8 +27,8 @@ $pdo = new PDO(
 
 
 if (isset ($_POST["connexion"])){
-    $username = $_POST["username"];
-    $password = ($_POST["password"]);
+    $username = htmlspecialchars($_POST["username"]);
+    $password = htmlspecialchars(md5($_POST["password"]));
 }
 
 $query_verif = $pdo->prepare("SELECT * FROM admins WHERE username = ? AND password = ?");
