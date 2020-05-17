@@ -49,7 +49,7 @@ $email = $querry_get_info->fetch();
 </head>
 <body>
     nom d'utilisateur : <?php echo $username?><br>
-    addresse email :<?php echo implode($email)?><br>
+    addresse email : <?php echo implode($email)?><br>
 
 
 
