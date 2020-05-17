@@ -35,6 +35,9 @@ session_start();
     <form action="" method="post">
         <button name="profile">accéder à votre profil</button>
     </form>
+    <form action="" method="post">
+            <button name="suppr_offre">supprimer offre</button>
+    </form>
 </body>
 </html>
 
@@ -54,5 +57,8 @@ if (isset($_POST['profile'])){
 
 if (isset($_POST['offres_depose'])){
     header('Location: depose_offres.php');
+}
+if (isset($_POST['suppr_offre'])){
+    header('Location: del_offre.php');
 }
 ?>
