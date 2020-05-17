@@ -17,10 +17,6 @@ if (!is_connected()){
     <title>home</title>
 </head>
 <body>
-    
-    <form action="" method="post">
-        <button name='retour_menu'>retour menu</button>
-    </form>
 
     <form action="" method="post">
         <button name="logout">log out</button>
@@ -38,9 +34,6 @@ if (isset($_POST['logout'])){
     header('Location: ../index.php');
 }
 
-if (isset($_POST['retour_menu'])){
-    header('Location: ../index.php');
-}
 
 if (isset($_POST['profile'])){
     header('Location: profile_demandeur.php');
