@@ -1,4 +1,6 @@
 <?php require '../function/connexion_test.php'; ?>
+<?php require '../function/kill_session.php'; ?>
+
 
 <?php
 $database_host = 'localhost';
@@ -29,7 +31,7 @@ if (isset ($_POST["connexion"])){
     $password = ($_POST["password"]);
 }
 
-$query_verif = $pdo->prepare("SELECT * FROM users WHERE username = ? AND password = ?");
+$query_verif = $pdo->prepare("SELECT * FROM admins WHERE username = ? AND password = ?");
 $query_verif->execute([$username,$password]);
 
 if (is_connected()){
@@ -38,6 +40,7 @@ if (is_connected()){
 
 if (!empty($_POST['username']) && !empty($_POST['password'])){
     if ($query_verif->rowCount()>0){
+        deconnect();
         session_start();
         $_SESSION['connected'] = $username;
         header('Location: ./home_admin.php');
