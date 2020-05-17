@@ -70,5 +70,6 @@ if (isset($_POST['title']) && isset($_POST['description'])){
     $query_post_offre->bindParam(':email',$email);
     $query_post_offre->execute();
     echo "<script type='text/javascript'>alert('votre offre est maintenant en ligne');</script>";
+    header('Location: ./home_donneur.php');
 }
 ?>

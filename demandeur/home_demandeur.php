@@ -23,7 +23,7 @@ if (!is_connected()){
     </form>
 
     <form action="" method="post">
-        <button name="profile">accéder a votre profile</button>
+        <button name="profile">accéder à votre profil</button>
     </form>
 </body>
 </html>
