@@ -37,20 +37,19 @@ $pdo = new PDO(
 	<form method="post">
 
 
-  	  <label>nom de votre entreprise</label>
-  	  <input type="text" name="username" ><br>
+  	 
+  	  <input type="text" name="username" placeholder="nom de l'entreprise"><br>
   	
 
-  	  <label>Email</label>
-  	  <input type="email" name="email"><br>
+  	  
+  	  <input type="email" name="email" placeholder="Email"><br>
   	
 
-  	  <label>mot de passe</label>
-  	  <input type="password" name="password_1"><br>
+  	  
+  	  <input type="password" name="password_1" placeholder="mot de passe"><br>
   	
 
-  	  <label> confirmer mot de passe</label>
-  	  <input type="password" name="password_2"><br>
+  	  <input type="password" name="password_2" placeholder="confirmer mot de passe"><br>
   	
 
   	  <button type="submit" name="connexion">se connecter </button><br>

@@ -63,7 +63,7 @@ if (!empty($_POST['username']) && !empty($_POST['password'])){
 </head>
 <body>
 <form action="" method="post">
-        <input type="username" placeholder="username" name ="username">
+        <input type="username" placeholder="nom de l'entreprise" name ="username">
         <input type="password"placeholder="password" name="password">
         <button action="submit" name="connexion">se connecter</button>
     </form>
