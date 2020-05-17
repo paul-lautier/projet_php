@@ -57,5 +57,6 @@ if (isset($_POST['delete'])){
     $querry_delete->execute();
     deconnect();
     header('Location: ../index.php');
+    exit;
 }
 ?>
