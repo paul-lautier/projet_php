@@ -20,13 +20,24 @@ if (!is_connected()){
     
 
 
-    <form action="" method="post">
-        <button name="logout">log out</button>
-    </form>
 
     <form action="" method="post">
         <button name="profile">accéder a votre profile</button>
+ 
     </form>
+
+    <form action=""method="post">
+        <button name="admin_users">compte utilisateurs</button>
+    </form>
+
+    <form action=""method="post">
+    <button name="admin_comps">compte entreprise</button>
+    </form>
+
+    <form action=""method="post">
+    <button name="logout">log out</button>
+    </form>
+
 </body>
 </html>
 
@@ -37,6 +48,14 @@ if (isset($_POST['logout'])){
 }
 
 if (isset($_POST['profile'])){
-    header('Location: profile_admin.php');
+    header('Location: ./profile_admin.php');
+}
+
+if (isset($_POST['admin_users'])){
+    header('Location: ./admin_users.php');
+}
+
+if (isset($_POST['admin_comps'])){
+    header('Location: ./admin_comps.php');
 }
 ?>
